@@ -11,7 +11,8 @@ public class UsaConta {
 		c1.setTipo("CC");
 		c1.informacoes();
 		c1.abrirConta();
-		c1.sacar();
+		c1.depositar(100);
+		c1.sacar(12);
 		c1.mostrar();
 		c1.fecharConta();
 

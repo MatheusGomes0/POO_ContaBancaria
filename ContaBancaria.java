@@ -20,10 +20,10 @@ public class ContaBancaria {
 		this.status = true;
 		if(this.tipo == "CC") {
 			System.out.println("Sua conta corrente foi aberta com sucesso");
-			this.saldo = 50;
+			this.saldo = 50; //quando abrir em conta corrente a pessoa ganha 50
 		} else {
 			System.out.println("Sua conta poupança foi aberta com sucesso");
-			this.saldo = 150;
+			this.saldo = 150; // quando abrir em poupança a pessoa ganha 150
 		}
 	}
 
@@ -38,16 +38,36 @@ public class ContaBancaria {
 		}
 	}
 
-	public void depositar() {
+	//outra forma de ser feito sem a entrada gráfica
+	public void depositar(float num) {
 		if(this.status == true) {
-			float num = Float.parseFloat(JOptionPane.showInputDialog("Qual o valor que deseja depositar?"));
 			this.saldo += num;
 		} else {
 			System.out.println("Sua conta esta fechada");
 		}
 	}
 
-	public void sacar() {
+	/*public void depositar() {
+		if(this.status == true) {
+			float num = Float.parseFloat(JOptionPane.showInputDialog("Qual o valor que deseja depositar?"));
+			this.saldo += num;
+		} else {
+			System.out.println("Sua conta esta fechada");
+		}
+	}*/
+
+	public void sacar(float num) {
+		if(this.status == true) {
+			if(this.saldo>0) {
+				this.saldo -= num;
+			} else {
+				System.out.println("Sua conta não possui dinheiro para sacar");
+			}
+		} else {
+			System.out.println("Sua conta está fechada");
+		}
+	}
+	/*public void sacar() {
 		if(this.status == true) {
 			if(this.saldo>0) {
 				float num = Float.parseFloat(JOptionPane.showInputDialog("Qual o valor que deseja sacar?"));
@@ -58,7 +78,7 @@ public class ContaBancaria {
 		} else {
 			System.out.println("Sua conta está fechada");
 		}
-	}
+	}*/
 
 	public void pagarMensal() {
 		if(this.tipo == "CC") {
@@ -102,15 +122,15 @@ public class ContaBancaria {
 
 
 	//metodo para mostrar p resultado
-	    public void mostrar() {
+	public void mostrar() {
 		System.out.println("O saldo da sua conta é: " + this.getSaldo());
 		System.out.println("Sua conta está aberta? " + this.isStatus());
-	    }
-		public void informacoes() {
-			System.out.println("Informações sobre sua conta");
-			System.out.println("O número da sua conta é: " + this.getNumConta());
-			System.out.println("O tipo da sua conta é: " + this.getTipo());
-			System.out.println("Seu nome é: " + this.getNomeDono());
-		}
-	
+	}
+	public void informacoes() {
+		System.out.println("Informações sobre sua conta");
+		System.out.println("O número da sua conta é: " + this.getNumConta());
+		System.out.println("O tipo da sua conta é: " + this.getTipo());
+		System.out.println("Seu nome é: " + this.getNomeDono());
+	}
+
 }
